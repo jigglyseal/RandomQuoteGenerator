@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta id="charset" charset="UTF-8">
+        <meta id="description" name="description" content="Random Quote Generator">
+        <meta id="keywords" name="keywords" content="Random, Quote, Generator">
+        <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1">
+        
+        <style>
+            html {
+                background-color: lightblue;
+            }
+            h1 {
+                text-align: center;
+                margin: 20px;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            div {
+                 display: flex;
+                 flex-direction: column;
+                 border: 2px solid black;
+                 border-radius: 10px;
+                 max-width: 200px;
+                 height: 150px;
+                 margin: auto;
+                 margin-top: 200px;
+                 scale: 1.5;
+
+            }
+            #quotegenerator {
+                             width: 150px;
+                             display: flex;
+                             margin-left: 25px;
+                             margin-top: 10px;
+            }
+            footer {
+                    position:fixed;
+                    bottom: 0;
+                    width: 100%;
+                    text-align: center;
+            }
+        </style>
+
+        <header>
+            <title>Random Quote Generator </title>
+            <h1>Random Quote Generator</h1>
+        </header>
+        <hr style="border: 2px solid rgb(0, 132, 255);">
+
+    </head>
+    <body>
+
+        <div>
+
+            <p style="text-align: center;">Welcome to Random Quote Generator!</p>
+            <button id="quotegenerator">Click to Generate Quote</button>
+
+        </div>
+        <script>
+            let interval = null;
+            const quotes = [
+                            "Karthik is a great person.",
+                            "He is the best friend anyone could have.",
+                            "Karthik is a very kind person.",
+                            "Karthik is him.",
+                            "You should be like Karthik.",
+                            "You should be grateful to have Karthik in your life.",
+            ];
+
+            const button = document.getElementById("quotegenerator");
+            const quoteText = document.querySelector("div p");
+            
+            function fetchQuote() {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                quoteText.textContent = quotes[randomIndex];
+            }
+            // Initial quote generation
+            button.addEventListener("click", () => {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteText.textContent = quotes[randomIndex];
+            });
+            
+            document.getElementById("quotegenerator").addEventListener("click", fetchQuote);
+
+            // Trigger quote generation on spacebar press
+            document.addEventListener("keydown", (event) => {
+                if (event.code === "Space" && interval === null) {
+                    event.preventDefault(); // Prevents scrolling
+                    fetchQuote();
+                    interval = setInterval(fetchQuote, 250);
+                }
+            });
+            document.addEventListener("keyup", (event) => {
+                if (event.code === "Space") {
+                    clearInterval(interval);
+                    interval = null;
+                }
+            });
+</script>
+
+    </body>
+    <footer>
+
+       
+       <nav>
+        <p> <a href="" target="_blank" style="text-decoration: none;"> Click here </a> for more random websites! </p>
+       </nav>
+
+    </footer>
+</html>
