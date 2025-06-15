@@ -1,2 +1,3 @@
 # RandomQuoteGenerator
-I got bored so you click the button and generate a quote 👍
+I got bored.
+You click the button and generate a quote 👍
